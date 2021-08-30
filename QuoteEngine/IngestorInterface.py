@@ -13,8 +13,8 @@ class IngestorInterface(ABC):
         ext = path.split('.')[-1]
         return ext in cls.allowed_extensions
 
-    #@abstractmethod
     @classmethod
+    @abstractmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """a class method to parse a file"""
         pass

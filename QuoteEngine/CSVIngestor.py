@@ -1,11 +1,11 @@
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 from typing import List
-import pandas
+import pandas as pd
 
 
 class CSVIngestor(IngestorInterface):
-    """An abstract class to read .csv files"""
+    """A class to read and parse .csv files"""
     allowed_extensions = ['csv']
 
     @classmethod
@@ -14,7 +14,7 @@ class CSVIngestor(IngestorInterface):
             raise Exception('cannot ingest exception')
 
         quotes = []
-        file = pandas.read_csv(path, header=0)
+        file = pd.read_csv(path, header=0)
         for index, row in file.iterrows():
             new_quote = QuoteModel(row['body'], row['author'])
             quotes.append(new_quote)

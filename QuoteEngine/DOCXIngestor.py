@@ -5,7 +5,7 @@ import docx
 
 
 class DOCXIngestor(IngestorInterface):
-    """An abstract class to read .docx files"""
+    """A class to read and parse .docx files"""
     allowed_extensions = ['docx']
 
     @classmethod

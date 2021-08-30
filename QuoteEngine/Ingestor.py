@@ -8,7 +8,8 @@ from typing import List
 
 
 class Ingestor(IngestorInterface):
-    """An abstract class to read all all type of files (i.e. csv, docx, txt and pdf"""
+    """An abstract class to read all all type of files (i.e. csv, docx,
+    txt and pdf """
     ingestors = [CSVIngestor, DOCXIngestor, TXTIngestor, PDFIngestor]
 
     @classmethod

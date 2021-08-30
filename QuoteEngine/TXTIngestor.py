@@ -4,7 +4,7 @@ from typing import List
 
 
 class TXTIngestor(IngestorInterface):
-    """An abstract class to read .txt files"""
+    """A class to read and parse .txt files"""
     allowed_extensions = ['txt']
 
     @classmethod

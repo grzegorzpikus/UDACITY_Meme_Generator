@@ -7,6 +7,7 @@ from typing import List
 
 
 class PDFIngestor(IngestorInterface):
+    """A class to read and parse .pdf files"""
     allowed_extensions = ['pdf']
 
     @classmethod

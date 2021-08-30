@@ -8,8 +8,12 @@ from QuoteEngine.Ingestor import Ingestor
 # @TODO Import your Ingestor and MemeEngine classes
 
 app = Flask(__name__)
-# meme = MemeEngine('./static')
+meme = MemeEngine('./static')
 
+# static_dir = "./static"
+# if os.path.exists(static_dir):
+#     shutil.rmtree(static_dir)
+# meme = MemeEngine(static_dir)
 
 def setup():
     """ Load all resources """
@@ -20,10 +24,11 @@ def setup():
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
     # TODO: Use the Ingestor class to parse all files in the
-    # quote_files variable
 
-    quotes = [Ingestor.parse(i) for i in quote_files]
-
+    quotes = []
+    for i in quote_files:
+        extracted_quote = Ingestor.parse(i)
+        quotes.extend(extracted_quote)
     images_path = "./_data/photos/dog/"
 
     # TODO: Use the pythons standard library os class to find all
@@ -32,7 +37,6 @@ def setup():
     imgs = []
     for root, dirs, files in os.walk(images_path):
         imgs = [os.path.join(root, name) for name in files]
-
     return quotes, imgs
 
 
@@ -49,7 +53,7 @@ def meme_rand():
 
     img = random.choice(imgs)
     quote = random.choice(quotes)
-    path = MemeEngine.make_meme(img, quote, quote)
+    path = meme.make_meme(img, quote.body, quote.author)
     return render_template('meme.html', path=path)
 
 
@@ -75,16 +79,17 @@ def meme_post():
     img = "./temp.jpg"
     image_url = request.form.get("image_url")
     img_data = requests.get(image_url, stream=True).content
-    with open(img, "wb") as f:
-        f.write(img_data)
+    with open(img, "wb") as file_meme:
+        file_meme.write(img_data)
 
     body = request.form.get("body", "")
     author = request.form.get("author", "")
-    path = MemeEngine.make_meme(img, body, author)
+    path = meme.make_meme(img, body, author)
     print(path)
     os.remove(img)
     return render_template("meme.html", path=path)
 
 
 if __name__ == "__main__":
+    app.debug = True
     app.run()
