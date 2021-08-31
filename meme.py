@@ -1,3 +1,4 @@
+"""This script is used to create a meme form the terminal level."""
 import argparse
 import os
 import random
@@ -7,7 +8,7 @@ from MemeEngine.MemeEngine import MemeEngine
 
 
 def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given an path and a quote """
+    """Generate a meme given an path and a quote."""
     img = None
     quote = None
 

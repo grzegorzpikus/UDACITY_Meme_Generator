@@ -1,3 +1,4 @@
+"""This script returned a parsed quote (body and author) from a PDF file."""
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 import random
@@ -7,11 +8,13 @@ from typing import List
 
 
 class PDFIngestor(IngestorInterface):
-    """A class to read and parse .pdf files"""
+    """A class to read and parse .pdf files."""
+
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """A class method to parse a file."""
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 

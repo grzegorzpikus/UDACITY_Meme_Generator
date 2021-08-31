@@ -1,3 +1,4 @@
+"""This script returned a parsed quote (body and author) from a DOC file."""
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 from typing import List
@@ -5,11 +6,13 @@ import docx
 
 
 class DOCXIngestor(IngestorInterface):
-    """A class to read and parse .docx files"""
+    """A class to read and parse .docx files."""
+
     allowed_extensions = ['docx']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """a class method to parse a file."""
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 

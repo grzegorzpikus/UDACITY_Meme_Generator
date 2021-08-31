@@ -24,7 +24,7 @@ Here, a user can enter an url of a picture and quote body and quote author:
 
 ![img_4.png](readme imgs/img_4.png)
 
-Clicking a Create Meme! button generates a customized meme:
+Clicking a `Create Meme!` button generates a customized meme:
 
 ![img_5.png](readme imgs/img_5.png)
 

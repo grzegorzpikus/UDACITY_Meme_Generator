@@ -1,3 +1,5 @@
+"""The script recognises a file extension and parses it using a proper script.
+"""
 from .IngestorInterface import IngestorInterface
 from .CSVIngestor import CSVIngestor
 from .DOCXIngestor import DOCXIngestor
@@ -9,7 +11,8 @@ from typing import List
 
 class Ingestor(IngestorInterface):
     """An abstract class to read all all type of files (i.e. csv, docx,
-    txt and pdf """
+    txt and pdf.
+    """
     ingestors = [CSVIngestor, DOCXIngestor, TXTIngestor, PDFIngestor]
 
     @classmethod

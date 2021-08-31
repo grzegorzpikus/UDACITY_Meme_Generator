@@ -1,14 +1,17 @@
+"""This script returned a parsed quote (body and author) from a TXT file."""
 from .IngestorInterface import IngestorInterface
 from .QuoteModel import QuoteModel
 from typing import List
 
 
 class TXTIngestor(IngestorInterface):
-    """A class to read and parse .txt files"""
+    """A class to read and parse .txt files."""
+
     allowed_extensions = ['txt']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """a class method to parse a file."""
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
