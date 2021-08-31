@@ -1,5 +1,4 @@
 
-
 class QuoteModel:
     """keep the body and the author of a quote"""
 
